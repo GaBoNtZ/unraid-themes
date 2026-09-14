@@ -1,0 +1,875 @@
+<?xml version='1.0' standalone='yes'?>
+<!DOCTYPE PLUGIN [
+<!ENTITY name      "reforged-theme">
+<!ENTITY author    "GaBoNtZ">
+<!ENTITY version   "2026.09.15">
+<!ENTITY launch    "Settings/DisplaySettings">
+<!ENTITY gitURL    "https://raw.githubusercontent.com/GaBoNtZ/unraid-themes/main/reforged">
+<!ENTITY pluginURL "&gitURL;/reforged-theme.plg">
+<!ENTITY plugdir   "/boot/config/plugins/&name;">
+<!ENTITY themedir  "/usr/local/emhttp/plugins/dynamix/styles/themes">
+]>
+
+<PLUGIN name="&name;"
+        author="&author;"
+        version="&version;"
+        pluginURL="&pluginURL;"
+        launch="&launch;"
+        icon="paint-brush"
+        min="7.0.0"
+        support="https://github.com/GaBoNtZ/unraid-themes/issues">
+
+<CHANGES>
+###2026.09.15
+- Deep-navy ground with electric-blue accents.
+- Shared layout pass: stable gutters, contained wide tables, mobile fixes.
+- Banner handling is now artwork-agnostic (an earlier build hardcoded one image's aspect ratio).
+- Stock stylesheet shipped inside the plugin, so removal always restores the original.
+</CHANGES>
+
+<!-- Stylesheet, written to flash so it survives reboots and is reinstalled on every boot. -->
+<FILE Name="&plugdir;/black.css">
+<INLINE>
+<![CDATA[
+/*
+ * "Tower Reforged" variant - deep-navy/electric-blue palette of the modern dark theme
+ * Built against the supplied Unraid 7.2.4 theme sources.
+ *
+ * Install as a drop-in replacement for themes/black.css after backing up the
+ * original file. This intentionally stays inside the existing Dynamix theme
+ * system instead of changing PHP/templates or adding JavaScript.
+ */
+
+:root {
+    /* Core surfaces */
+    --modern-bg: #0B1220;
+    --modern-bg-deep: #060A12;
+    --modern-surface: #101B2E;
+    --modern-surface-2: #152238;
+    --modern-surface-3: #1A2C48;
+    --modern-border: #1E3252;
+    --modern-border-soft: rgba(120, 160, 255, 0.16);
+    --modern-text: #EAF0FA;
+    --modern-text-muted: #8FA3C4;
+    --modern-blue: #2E7BFF;
+    --modern-blue-strong: #1F5FD6;
+    --modern-cyan: #38BDF8;
+    --modern-green: #2FD873;
+    --modern-orange: #F59E0B;
+    --modern-red: #F0554E;
+    --modern-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+
+    /* Theme variables consumed by default-base.css */
+    --text-color: var(--modern-text);
+    --blockquote-text-color: var(--modern-text-muted);
+    --alt-text-color: var(--modern-text-muted);
+    --disabled-text-color: #5E7195;
+    --inverse-text-color: var(--modern-text);
+    --link-text-color: var(--modern-blue);
+
+    --background-color: var(--modern-bg);
+    --opac-background-color: rgba(11, 18, 32, 0.95);
+    --mild-background-color: var(--modern-surface);
+    --usage-bar-background-color: #182B4A;
+    --usage-bar-used-background-color: var(--modern-blue);
+    --usage-disk-background-color: #12203A;
+    --inverse-background-color: var(--modern-text);
+    --radio-background-color: #182B4A;
+    --dashboard-background-color: var(--modern-surface);
+    --dashboard-title-action-color: rgba(46, 123, 255, 0.12);
+    --dashboard-icon-color: #9CC2FF;
+
+    --border-color: var(--modern-border);
+    --disabled-border-color: #33486E;
+    --input-border-color: var(--modern-border);
+    --disabled-input-border-color: #33486E;
+    --textarea-border-color: var(--modern-border);
+    --inverse-border-color: rgba(140, 170, 255, 0.25);
+    --table-border-color: var(--modern-border-soft);
+    --table-background-color: rgba(16, 27, 46, 0.72);
+    --table-header-background-color: rgba(21, 34, 56, 0.92);
+    --hover-table-row-background-color: rgba(46, 123, 255, 0.08);
+
+    --footer-text: var(--modern-text-muted);
+    --footer-background-color: rgba(6, 10, 18, 0.96);
+
+    --small-shadow: var(--modern-shadow);
+    --hr-color: var(--modern-border);
+    --checkbox-color: #6E82A6;
+    --checkbox-hover-color: var(--modern-blue);
+
+    --brand-orange: var(--orange-500);
+    --brand-red: var(--red-800);
+
+    --header-text-color: var(--modern-text);
+    --header-background-color: #0A1322;
+    --title-header-background-color: rgba(21, 34, 56, 0.88);
+
+    --scrollbar-color: #2C4470;
+    --scrollbar-hover-color: #3E5E90;
+    --bg-opacity-10: rgba(0, 0, 0, 0.10);
+    --bg-opacity-30: rgba(0, 0, 0, 0.30);
+
+    --button-text-color: #CFE2FF;
+    --button-border: var(--modern-border);
+    --button-background: rgba(23, 45, 84, 0.9);
+    --button-background-size: cover;
+    --hover-button-border: var(--modern-blue);
+    --hover-button-text-color: #ffffff;
+    --hover-button-background: linear-gradient(135deg, var(--modern-blue-strong), var(--modern-blue));
+
+    --input-bg-color: #0A1424;
+    --focus-input-bg-color: #152238;
+    --shade-bg-color: rgba(16, 27, 46, 0.78);
+
+    /* Dynamix variables */
+    --dynamix-filetree-bg-color: var(--modern-bg-deep);
+    --dynamix-box-text-color: var(--modern-text);
+    --dynamix-box-inner-div-border-color: var(--modern-border-soft);
+    --dynamix-tablesorter-thead-row-border-color: var(--modern-border);
+    --dynamix-tablesorter-thead-th-text-color: #A9BCD9;
+    --dynamix-tablesorter-thead-th-bg-color: var(--modern-surface-2);
+    --dynamix-tablesorter-tbody-row-bg-color: rgba(16, 27, 46, 0.66);
+    --dynamix-tablesorter-tbody-row-alt-bg-color: rgba(14, 34, 56, 0.55);
+    --dynamix-tablesorter-tbody-row-border-color: var(--modern-border-soft);
+    --dynamix-select-bg-color: var(--modern-bg-deep);
+    --dynamix-select-disabled-bg-color: #17253E;
+}
+
+/* App background: restrained blue glow, no image assets required. */
+html,
+body {
+    background:
+        radial-gradient(circle at 82% -8%, rgba(46, 123, 255, 0.10), transparent 32rem),
+        radial-gradient(circle at 8% 18%, rgba(90, 162, 255, 0.06), transparent 28rem),
+        var(--modern-bg);
+}
+
+/* Header */
+#header {
+    border-bottom: 1px solid var(--modern-border-soft);
+    background: rgba(10, 19, 34, 0.94);
+    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(12px);
+}
+
+#header .block {
+    border: 1px solid var(--modern-border-soft);
+    border-radius: 10px;
+    background: rgba(16, 27, 46, 0.66);
+}
+
+/* Navigation */
+.nav-tile {
+    min-height: 4.4rem;
+    line-height: 4.4rem;
+    border-bottom: 1px solid var(--modern-border-soft);
+    background: rgba(11, 18, 32, 0.86);
+    backdrop-filter: blur(10px);
+}
+
+.nav-item a,
+.nav-user a {
+    color: #A9BCD9;
+    border-radius: 8px;
+    transition: color .18s ease, background-color .18s ease;
+}
+
+.nav-item:hover a,
+.nav-item:focus-within a,
+.nav-user:hover a {
+    color: #ffffff;
+    background: rgba(46, 123, 255, 0.08);
+}
+
+.nav-item.active a {
+    color: #ffffff;
+}
+
+.nav-item.active:after {
+    height: 3px;
+    background: linear-gradient(90deg, var(--modern-blue), var(--modern-cyan));
+    box-shadow: 0 0 12px rgba(46, 123, 255, 0.55);
+}
+
+/* Main content spacing */
+#displaybox {
+    padding: 1.4rem 1.4rem 4.2rem;
+}
+
+/* Section title bars */
+div.title,
+div#title {
+    min-height: 3.2rem;
+    margin: 1.2rem 0 .8rem;
+    padding: .8rem 1rem;
+    border: 1px solid var(--modern-border-soft);
+    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(24, 43, 74, 0.92), rgba(16, 27, 46, 0.92));
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+}
+
+/* Dashboard cards */
+table.dashboard {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+table.dashboard tbody {
+    overflow: hidden;
+    border: 1px solid var(--modern-border-soft);
+    border-radius: 12px;
+    background: linear-gradient(180deg, rgba(21, 34, 56, 0.96), rgba(13, 21, 38, 0.96));
+    box-shadow: var(--modern-shadow);
+}
+
+table.dashboard tbody td:first-child {
+    border-left: 1px solid transparent;
+}
+
+table.dashboard tr:first-child > td {
+    color: #F2F6FF;
+}
+
+table.dashboard .control {
+    color: #BFD9FF;
+    border: 1px solid rgba(46, 123, 255, 0.14);
+    background: rgba(46, 123, 255, 0.09);
+}
+
+table.dashboard .control:hover {
+    color: #ffffff;
+    border-color: rgba(46, 123, 255, 0.35);
+    background: rgba(46, 123, 255, 0.18);
+}
+
+/* Main/storage tables */
+.TableContainer,
+.TableContainer--no-min-width {
+    border: 1px solid var(--modern-border-soft);
+    border-radius: 12px;
+    background: rgba(10, 19, 34, 0.58);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+}
+
+table.unraid,
+table.tablesorter,
+table.disk_status,
+table.array_status,
+table.share_status {
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+table.unraid thead tr,
+table.tablesorter thead tr {
+    background: var(--modern-surface-2);
+}
+
+table.unraid thead td,
+table.tablesorter thead th {
+    color: #9DB1D2;
+    font-size: 1.1rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+table.unraid tbody tr,
+table.tablesorter tbody tr {
+    transition: background-color .16s ease;
+}
+
+table.unraid tbody tr:hover,
+table.tablesorter tbody tr:hover {
+    background: rgba(46, 123, 255, 0.07) !important;
+}
+
+/* Usage bars */
+.usage-bar,
+.usage-disk {
+    overflow: hidden;
+    border-radius: 999px;
+    background: #16243E;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.035);
+}
+
+.usage-bar > span,
+.usage-disk > span:first-child {
+    background: linear-gradient(90deg, var(--modern-blue-strong), var(--modern-blue));
+}
+
+.usage-disk.sys > span,
+.greenbar {
+    background: linear-gradient(90deg, #1abf67, var(--modern-green));
+}
+
+.orangebar {
+    background: linear-gradient(90deg, #f37722, var(--modern-orange));
+}
+
+.redbar {
+    background: linear-gradient(90deg, #e33e4a, var(--modern-red));
+}
+
+/* Inputs and buttons */
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="url"],
+input[type="email"],
+input[type="date"],
+input[type="file"],
+textarea,
+.textarea,
+select {
+    border-radius: 8px;
+    background: var(--input-bg-color);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.015);
+}
+
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+button,
+a.button {
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+/* Tabs */
+.tabs button[role="tab"] {
+    border-radius: 8px 8px 0 0;
+    color: #93A6C4;
+    background: rgba(16, 27, 46, 0.48);
+}
+
+.tabs button[role="tab"]:hover,
+.tabs button[role="tab"][aria-selected="true"] {
+    color: #ffffff;
+    border-color: rgba(46, 123, 255, 0.45);
+    background: rgba(46, 123, 255, 0.09);
+}
+
+/* Utility/app panels */
+.Panel a,
+div.box {
+    border-radius: 10px;
+}
+
+.Panel a:hover,
+.Panel a:focus-visible {
+    background: rgba(46, 123, 255, 0.07);
+}
+
+.shade,
+div.up {
+    border-color: var(--modern-border-soft);
+    border-radius: 10px;
+    background: rgba(13, 21, 38, 0.72);
+}
+
+/* Footer */
+#footer {
+    border-top: 1px solid var(--modern-border-soft);
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.16);
+    backdrop-filter: blur(10px);
+}
+
+/* Sidebar mode: turn the existing sidebar into the compact modern rail. */
+.Theme--sidebar #displaybox {
+    padding-left: 9.5rem;
+}
+
+.Theme--sidebar #menu {
+    background: rgba(5, 15, 26, 0.96);
+    border-right: 1px solid var(--modern-border-soft);
+    box-shadow: 8px 0 26px rgba(0, 0, 0, 0.16);
+}
+
+.Theme--sidebar .nav-item a,
+.Theme--sidebar .nav-user a {
+    border-radius: 8px;
+}
+
+/* Scrollbars */
+* {
+    scrollbar-color: var(--scrollbar-color) transparent;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    border: 2px solid transparent;
+    border-radius: 999px;
+    background: #2C4470;
+    background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3E5E90;
+    background-clip: padding-box;
+}
+
+/* Preserve status semantics while making them read cleanly on the new surfaces. */
+.green-text,
+.passed {
+    color: var(--modern-green) !important;
+}
+
+.orange-text,
+.warning {
+    color: var(--modern-orange) !important;
+}
+
+.red-text,
+.failed {
+    color: var(--modern-red) !important;
+}
+
+.blue-text {
+    color: var(--modern-cyan) !important;
+}
+
+@media (max-width: 767px) {
+    #header {
+        min-height: 64px;
+    }
+
+    #displaybox {
+        padding: 1rem 1rem 4.2rem;
+    }
+
+    .Theme--sidebar #displaybox {
+        padding-left: 1rem;
+    }
+
+    table.dashboard {
+        border-spacing: 0 8px;
+    }
+}
+
+/* -------------------------------------------------------------------------
+ * Storage usage threshold colours
+ *
+ * Dynamix applies greenbar/orangebar/redbar classes to the filled span based
+ * on the current usage threshold. Keep these rules after the generic modern
+ * blue usage rule so the native warning state remains visible.
+ * ---------------------------------------------------------------------- */
+.usage-disk > span.greenbar,
+.usage-bar > span.greenbar {
+    background: linear-gradient(90deg, #18b965, #2FD873) !important;
+}
+
+.usage-disk > span.orangebar,
+.usage-bar > span.orangebar {
+    background: linear-gradient(90deg, #f07824, #F59E0B) !important;
+}
+
+.usage-disk > span.redbar,
+.usage-bar > span.redbar {
+    background: linear-gradient(90deg, #d93a47, #F0554E) !important;
+}
+
+.usage-disk > span.graybar,
+.usage-bar > span.graybar {
+    background: linear-gradient(90deg, #54627F, #70819F) !important;
+}
+
+/* -------------------------------------------------------------------------
+ * Dashboard processor/load threshold colours
+ *
+ * Dynamix colours the numeric CPU/load label with green-text/orange-text/
+ * red-text while the adjacent .usage-bar fill otherwise uses the generic
+ * theme fill. Mirror that semantic state onto the matching bar without
+ * changing widths or dashboard behaviour. Both DOM orders are covered.
+ * ---------------------------------------------------------------------- */
+span.load.green-text + .usage-bar > span,
+.green-text + .usage-bar > span,
+.usage-bar:has(+ span.load.green-text) > span,
+.usage-bar:has(+ .green-text) > span {
+    background: linear-gradient(90deg, #18b965, #2FD873) !important;
+}
+
+span.load.orange-text + .usage-bar > span,
+.orange-text + .usage-bar > span,
+.usage-bar:has(+ span.load.orange-text) > span,
+.usage-bar:has(+ .orange-text) > span {
+    background: linear-gradient(90deg, #f07824, #F59E0B) !important;
+}
+
+span.load.red-text + .usage-bar > span,
+.red-text + .usage-bar > span,
+.usage-bar:has(+ span.load.red-text) > span,
+.usage-bar:has(+ .red-text) > span {
+    background: linear-gradient(90deg, #d93a47, #F0554E) !important;
+}
+
+/* -------------------------------------------------------------------------
+ * v1.3 (local): real rounded corners for dashboard cards.
+ * Row-groups (tbody) legally cannot clip border-radius, so the earlier
+ * tbody radius never renders. Round via the corner cells instead, with a
+ * flat per-cell surface so no gradient seams appear between columns.
+ * ---------------------------------------------------------------------- */
+table.dashboard tbody {
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+table.dashboard tbody > tr > td {
+    background: #121F36;
+    border-top: 0;
+    border-bottom: 0;
+}
+
+table.dashboard tbody > tr:first-child > td { border-top: 1px solid var(--modern-border-soft); }
+table.dashboard tbody > tr:last-child  > td { border-bottom: 1px solid var(--modern-border-soft); }
+table.dashboard tbody > tr > td:first-child { border-left: 1px solid var(--modern-border-soft); }
+table.dashboard tbody > tr > td:last-child  { border-right: 1px solid var(--modern-border-soft); }
+
+table.dashboard tbody > tr:first-child > td:first-child { border-top-left-radius: 14px; }
+table.dashboard tbody > tr:first-child > td:last-child  { border-top-right-radius: 14px; }
+table.dashboard tbody > tr:last-child  > td:first-child { border-bottom-left-radius: 14px; }
+table.dashboard tbody > tr:last-child  > td:last-child  { border-bottom-right-radius: 14px; }
+
+/* -------------------------------------------------------------------------
+ * v1.4 (local): Apps page cards, Stats meters, header contrast.
+ * ---------------------------------------------------------------------- */
+
+/* Community Applications: its themes/black.css loads after this file and
+   redefines card/border vars (#191818 cards, #2b2b2b borders). html:root
+   outranks its :root regardless of order. */
+html:root {
+    --template-background: #121F36;
+    --template-hover-background: #16294A;
+    --template-favourite: #1A3156;
+    --border-color: #1E3252;
+    --sidebar-background: #070D18;
+    --ca-dark-bg-color: #0C1526;
+    --ca-medium-bg-color: #182B4A;
+    --chart-grid: #182B4A;
+}
+img.ca_displayIcon, img.popupIcon {
+    background-color: #152540;
+}
+
+/* System Stats page: fully round the meter bars */
+.mybar {
+    border-radius: 999px;
+    overflow: hidden;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+.mybar * {
+    border-radius: inherit;
+}
+
+/* Header identity block: force readable light text (server name inherited
+   the stock inverse-text logic and rendered too dark on the new surfaces) */
+#header .block,
+#header .block a,
+#header .text-left,
+#header .text-right,
+#header .text-right a,
+#header .text-right #licensetype {
+    color: #EAF0FA !important;
+}
+#header .text-left {
+    border-right-color: var(--modern-orange);
+}
+
+/* -------------------------------------------------------------------------
+ * v1.6 (local): notifications aligned with the theme surfaces
+ * (jGrowl toasts + notification panel kept stock charcoal until now).
+ * ---------------------------------------------------------------------- */
+div.jGrowl div.jGrowl-notification,
+div.jGrowl div.jGrowl-closer {
+    background: linear-gradient(180deg, rgba(22, 36, 62, 0.97), rgba(14, 22, 40, 0.97));
+    border: 1px solid var(--modern-border-soft);
+    border-radius: 12px;
+    color: var(--modern-text);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+}
+div.jGrowl div.jGrowl-notification .jGrowl-header {
+    color: #BFD9FF;
+}
+div.jGrowl div.jGrowl-notification .jGrowl-close {
+    color: var(--modern-text-muted);
+}
+
+/* -------------------------------------------------------------------------
+ * v1.7 (local): unraid-ui web components (header strip + notifications).
+ * These live in light DOM but use their own tokens:
+ *  - header strip text: --header-text-primary/secondary (only injected when
+ *    Display Settings custom colors are set — define fallbacks here)
+ *  - notifications panel: shadcn-style HSL triplets under .unapi.dark
+ * ---------------------------------------------------------------------- */
+html:root {
+    --header-text-primary: #EAF0FA;
+    --header-text-secondary: #9FB0CE;
+}
+
+.unapi.dark,
+.unapi.dark[data-theme=black],
+.unapi.dark[data-theme=gray] {
+    --background: 220 49% 9%;   /* #101B2E navy panel */
+    --card: 219 45% 13%;
+    --popover: 219 45% 13%;
+    --border: 219 40% 22%;
+    --muted: 219 42% 16%;
+    --input: 219 45% 14%;
+}
+
+/* -------------------------------------------------------------------------
+ * v1.8 (local): Unassigned Devices plugin tables — its style-black.css
+ * hardcodes #262626 headers and #212121 row stripes. Align with theme.
+ * ---------------------------------------------------------------------- */
+table.usb_mounts thead tr:first-child td,
+table.usb_absent thead tr:first-child td,
+table.samba_mounts thead tr:first-child td {
+    background-color: var(--modern-surface-2) !important;
+}
+table.usb_mounts tbody tr:nth-child(even),
+table.usb_absent tbody tr:nth-child(even),
+table.samba_mounts tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+}
+table.usb_mounts tbody tr:nth-child(odd),
+table.usb_absent tbody tr:nth-child(odd),
+table.samba_mounts tbody tr:nth-child(odd) {
+    background-color: transparent !important;
+}
+table.usb_mounts tbody tr:hover,
+table.usb_absent tbody tr:hover,
+table.samba_mounts tbody tr:hover {
+    background-color: var(--hover-table-row-background-color) !important;
+}
+
+/* -------------------------------------------------------------------------
+ * v1.10 (local): banner rendering — stock stretches the file to 100% x 90px
+ * (squashing tall art). Show a proportional window of the original instead.
+ * Adjust the vertical focus with the percentage (0%=top, 100%=bottom).
+ * ---------------------------------------------------------------------- */
+#header.image {
+    /* Banner artwork fills the header and is cropped to fit, so the theme works
+       with any image. (An earlier build sized the header from one specific
+       banner's aspect ratio, which broke for everyone else's artwork.)
+       On phones the mobile block below switches to showing the whole strip. */
+    background-size: cover;
+    background-position: center 52%;
+    min-height: 128px;
+}
+
+/* ===== Local patches (v1.1–v1.3) — layout only, card/panel metrics untouched =====
+   Original TITANIUM gutter was 1.4rem = 14px (Unraid's root font is 10px), which
+   reads as no margin at all. These widen the page gutter without touching any
+   card, table, font or spacing value inside the content column. */
+
+/* v1.3 — stable outer gutters. clamp() instead of rem + breakpoints: rem tracks
+   Unraid's 10px root (so 3rem was only 30px) and the old @media steps collapsed
+   the gutter on narrower windows, which is why Firefox lost its margins first. */
+#displaybox { padding-left: clamp(28px, 3.7vw, 76px); padding-right: clamp(28px, 3.7vw, 76px); }
+
+/* v1.2 — wide tables scroll inside their own box so the page never scrolls
+   sideways (page-level overflow is what ate the gutters). Stock containment,
+   restated defensively; table min-width stays at the original 1000px. */
+#displaybox .TableContainer,
+#displaybox .TableContainer--no-min-width { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+@media (min-width: 768px) {
+    /* desktop only — on phones Unraid reflows these tables to fit, and forcing
+       1000px left the visible column area blank (regression, now scoped) */
+    #displaybox .TableContainer > table { min-width: 1000px; }
+}
+
+/* ===== v1.4 (local) — mobile pass, verified against iPhone 14 mini (375pt) ===== */
+@media (max-width: 767px) {
+
+    /* #3 banner — `cover` on a ~10:1 strip zooms it hard on a phone and buries
+       the identity row. Show the whole artwork across the top instead. */
+    #header.image {
+        background-size: 100% auto;
+        background-position: center top;
+        background-repeat: no-repeat;
+        min-height: 96px;
+    }
+
+    /* #4 section panels — these are transparent over the page background, which
+       reads as flat black on a phone. Give them the theme's panel surface. */
+    #displaybox div.content:not(:has(.grid)) {
+        background: var(--titanium-panel, var(--modern-surface));
+        border: 1px solid var(--titanium-edge, var(--modern-border));
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 14px;
+    }
+
+    /* #1 device tables — stock pins them to 1000px with no mobile override, so a
+       phone only ever sees the left slice of the table. Let them reflow.
+       (Deliberate deviation from stock, owner-approved.) */
+    #displaybox .TableContainer > table,
+    #displaybox .TableContainer--no-min-width > table { min-width: 0; }
+    #displaybox .TableContainer td,
+    #displaybox .TableContainer th { overflow-wrap: anywhere; }
+
+    /* #5 Community Applications — its own sheets overrun the viewport, and iOS
+       paints controls the theme never styled with native light chrome. */
+    #displaybox [class*="ca_"] { max-width: 100%; }
+    #displaybox .ca_holder,
+    #displaybox .ca_appPopup { overflow-wrap: anywhere; }
+    #displaybox button,
+    #displaybox input[type="button"],
+    #displaybox input[type="submit"],
+    #displaybox input[type="reset"] {
+        -webkit-appearance: none;
+        appearance: none;
+        background: var(--button-background, #16242f);
+        color: var(--button-text-color, #cdeaff);
+        border: 1px solid var(--button-border, #506675);
+        border-radius: 8px;
+    }
+}
+
+/* v1.5 (local) — the dashboard's wrapper (div.content) carries overflow:auto,
+   which clipped each card's 7px pulse ring where it sits nearest the wrapper
+   edge: the outer sides of the left- and right-hand columns. Only the
+   dashboard grid needs the ring to escape; Main keeps its scroll containment
+   (its wide tables still scroll inside .TableContainer, see v1.2). */
+#displaybox div.content:has(.grid) { overflow: visible; }
+]]>
+</INLINE>
+</FILE>
+
+<!-- The pristine Unraid stock stylesheet, shipped with the plugin so removal can
+     always put the original back, even on a server whose theme file was already
+     replaced by hand before installing. -->
+<FILE Name="&plugdir;/black.css.stock">
+<INLINE>
+<![CDATA[
+:root {
+    /* Theme specific vars */
+    --theme-black--mild-gray-700: #262626;
+    /* /Theme specific vars */
+
+    /* Begin setting vars used in default-base */
+    --text-color: var(--gray-100);
+    --blockquote-text-color: var(--gray-800); 
+    --alt-text-color: var(--gray-500); 
+    --disabled-text-color: var(--gray-500); 
+    --inverse-text-color: var(--gray-900); 
+    --link-text-color: var(--blue-800); 
+
+    --background-color: var(--gray-900); 
+    --opac-background-color: var(--gray-895);
+    --mild-background-color: var(--theme-black--mild-gray-700);
+    --usage-bar-background-color: var(--gray-600);
+    --usage-bar-used-background-color: var(--gray-500);
+    --usage-disk-background-color: var(--gray-700); 
+    --inverse-background-color: var(--gray-100);
+    --radio-background-color: var(--gray-700); 
+    --dashboard-background-color: var(--gray-700);
+    --dashboard-title-action-color: var(--white-opacity-30);
+    --dashboard-icon-color: var(--mild-background-color);
+
+    --border-color: var(--gray-600);
+    --disabled-border-color: var(--gray-500); 
+    --input-border-color: var(--gray-200); 
+    --disabled-input-border-color: var(--gray-500); 
+    --textarea-border-color: var(--gray-400);
+    --inverse-border-color: var(--white-opacity-25); 
+    --table-border-color: var(--gray-700); 
+    --table-background-color: var(--gray-800);
+    --table-header-background-color: var(--gray-800);
+    --hover-table-row-background-color: var(--white-opacity-05);
+
+    --footer-text: var(--text-color);
+    --footer-background-color: var(--mild-background-color);
+
+    --small-shadow: 0 0 3px var(--gray-700); 
+    --hr-color: var(--gray-800); 
+
+    --checkbox-color: var(--gray-500); 
+    --checkbox-hover-color: var(--gray-600); 
+
+    --brand-orange: var(--orange-500);
+    --brand-red: var(--red-800);
+
+    --header-text-color: var(--customer-header-text-color, var(--inverse-text-color));
+    --header-background-color: var(--custom-header-background-color, var(--gray-100));
+
+    --title-header-background-color: var(--mild-background-color);
+
+    --scrollbar-color: var(--gray-300);
+    --scrollbar-hover-color: var(--gray-200);
+
+    --bg-opacity-10: var(--black-opacity-10);
+    --bg-opacity-30: var(--black-opacity-30);
+
+    --button-text-color: var(--brand-orange);
+    --button-border: none;
+    --button-background: linear-gradient(90deg, var(--brand-red) 0, var(--brand-orange)) 0 0 no-repeat,
+        linear-gradient(90deg, var(--brand-red) 0, var(--brand-orange)) 0 100% no-repeat,
+        linear-gradient(0deg, var(--brand-red) 0, var(--brand-red)) 0 100% no-repeat,
+        linear-gradient(0deg, var(--brand-orange) 0, var(--brand-orange)) 100% 100% no-repeat;
+    --button-background-size: 100% 2px, 100% 2px, 2px 100%, 2px 100%;
+
+    --hover-button-border: var(--blue-700);
+    --hover-button-text-color: var(--white);
+    --hover-button-background: linear-gradient(90deg,var(--brand-red) 0,var(--brand-orange));
+
+    --input-bg-color: transparent;
+    --focus-input-bg-color: var(--mild-background-color);
+
+    --shade-bg-color: var(--gray-800);
+    /* /End vars used in default-base */
+
+    /* dynamix CSS var values set in default-dynamix.css */
+    --dynamix-filetree-bg-color: var(--gray-900);
+}
+]]>
+</INLINE>
+</FILE>
+
+<!-- Install: put our stylesheet in place. -->
+<FILE Run="/bin/bash">
+<INLINE>
+LIVE="&themedir;/black.css"
+
+cp "&plugdir;/black.css" "$LIVE"
+
+echo ""
+echo "REFORGED theme installed."
+echo "Select the *Black* theme in Settings -&gt; Display Settings, then hard-refresh (Ctrl+F5)."
+echo "Only one Unraid theme plugin can be active at a time - they share themes/black.css."
+echo ""
+</INLINE>
+</FILE>
+
+<!-- Remove: restore the stock theme, then clean up. -->
+<FILE Run="/bin/bash" Method="remove">
+<INLINE>
+STOCK="&plugdir;/black.css.stock"
+LIVE="&themedir;/black.css"
+
+if [ -f "$STOCK" ]; then
+    cp "$STOCK" "$LIVE"
+    echo "Stock Black theme restored."
+else
+    echo "No stock backup found - the theme file stays as-is."
+fi
+
+rm -rf "&plugdir;"
+echo "REFORGED theme removed. Hard-refresh the browser (Ctrl+F5)."
+</INLINE>
+</FILE>
+
+</PLUGIN>
