@@ -1,5 +1,7 @@
 # Unraid themes
 
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-%E2%98%95-FFDD00?style=flat-square&logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/gabontz)
+
 Four dark themes for the **Unraid 7.2.x** webGUI, each packaged as a standard Unraid plugin so they
 install from the *Plugins* tab and can be listed in Community Applications.
 
@@ -79,6 +81,11 @@ so re-check the look after a major OS upgrade.
 The plugins already carry the metadata CA needs (`pluginURL`, `support`, `icon`, `<CHANGES>`,
 `min`, dated versions). To get them listed, request inclusion in the CA feed via the Community
 Applications support thread on the Unraid forums, pointing at this repo.
+
+## Like these?
+
+They are free and always will be. If one of them brightened up your server,
+[buy me a coffee](https://buymeacoffee.com/gabontz) ☕ — entirely optional, never required.
 
 ---
 

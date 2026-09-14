@@ -71,3 +71,7 @@ scp banner.png root@tower:/boot/config/plugins/dynamix/banner.png
 ```
 Then *Settings → Display Settings* → set **Banner** to the custom image. The plugin never touches
 your banner, so installing or removing a theme leaves your own artwork alone.
+
+---
+
+Free, and always will be. If it made your server nicer to look at, [buy me a coffee](https://buymeacoffee.com/gabontz) ☕
