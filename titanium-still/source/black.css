@@ -1,5 +1,4 @@
-/* TITANIUM STILL v1.0 - motion-off build. Identical to TITANIUM with every
-   Pulse animation paused via the theme's own play-state token.
+/* TITANIUM STILL v1.0 - motion-off build (play-state paused).
    Original header: TITANIUM v1.0 — Unraid 7.2.4. Theme only; no scripts or layout templates. */
 :root {
     /* Core surfaces */
@@ -349,7 +348,7 @@ table.samba_mounts tbody tr:hover { background-color: var(--hover-table-row-back
     initial-value: 0deg;
 }
 html:root {
-    --titanium-pulse-play-state: paused;   /* STILL build: rails and rings are drawn, but frozen */
+    --titanium-pulse-play-state: paused;   /* STILL build: rails and rings drawn, frozen */
     --titanium-pulse-cyan: #41e7f6;
 }
 body {
@@ -571,3 +570,136 @@ div.title::after, div#title::after {
    dashboard grid needs the ring to escape; Main keeps its scroll containment
    (its wide tables still scroll inside .TableContainer, see v1.2). */
 #displaybox div.content:has(.grid) { overflow: visible; }
+
+/* ===== v1.6 (local) — chamfer everywhere + deeper glass =====
+   The cut-corner treatment previously existed only on dashboard cards and
+   section title bars; the data panels on Main/Shares/Users/Settings kept plain
+   rounded corners. Same octagon geometry is applied to them here.
+   The outline is drawn with four 1px drop-shadows rather than a border, because
+   a border follows the rectangle and would leave the chamfered edges bare. */
+#displaybox .TableContainer,
+#displaybox .TableContainer--no-min-width {
+    border: 0;
+    border-radius: 0;
+    background: linear-gradient(168deg, #263a47 0%, #16242f 28%, #0e1a23 68%, #091118 100%);
+    box-shadow:
+        inset 0 1px 0 #dcf6ff8c,           /* top highlight  */
+        inset 0 3px 12px #8fd2ea24,        /* inner sheen    */
+        inset 0 -24px 30px -22px #000d;    /* lower shading  */
+    clip-path: polygon(14px 0, calc(100% - 14px) 0, 100% 14px,
+        100% calc(100% - 14px), calc(100% - 14px) 100%, 14px 100%,
+        0 calc(100% - 14px), 0 14px);
+    filter:
+        drop-shadow(1px 0 0 #4b8fa0) drop-shadow(-1px 0 0 #4b8fa0)
+        drop-shadow(0 1px 0 #4b8fa0) drop-shadow(0 -1px 0 #4b8fa0)
+        drop-shadow(0 10px 14px #000a);
+}
+
+/* Deeper smoked glass in the dashboard cards, brighter internal highlight,
+   heavier shadow underneath. Geometry untouched. */
+table.dashboard > tbody::before {
+    background: linear-gradient(168deg, #33505f 0%, #1e313e 26%, #13202b 62%, #0a131a 100%);
+    box-shadow:
+        inset 0 1px 0 #e2f8ff9e,
+        inset 0 3px 12px #9fd9ee29,
+        inset 0 -26px 32px -22px #000e,
+        inset 0 0 0 1px #4d7f8d;
+}
+table.dashboard > tbody {
+    filter: drop-shadow(0 0 4px #22dcef33) drop-shadow(0 11px 13px #000a);
+}
+
+/* The data tables paint an opaque rectangle over their container, which hid the
+   chamfer and the glass behind it. Let the container's surface show through;
+   header row and hover states keep their own colours. */
+#displaybox .TableContainer > table,
+#displaybox .TableContainer--no-min-width > table,
+#displaybox .TableContainer > table > tbody,
+#displaybox .TableContainer--no-min-width > table > tbody { background: transparent; }
+
+/* ===== v1.7 (local) — full outer energy lines on every panel =====
+   Dashboard cards already orbit a pulse ring; section titles only had a rail
+   under them and the data panels had none. Both now carry the full perimeter
+   ring, using the card's own gradient, cadence and play-state token.
+   The ring sits at inset 0 (not outside the box) because these containers
+   scroll, and anything drawn beyond their edge would be clipped away. */
+#displaybox .TableContainer,
+#displaybox .TableContainer--no-min-width,
+div.title, div#title {
+    position: relative;
+    isolation: isolate;
+}
+#displaybox .TableContainer::after,
+#displaybox .TableContainer--no-min-width::after,
+div.title::before, div#title::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    background: repeating-conic-gradient(from var(--titanium-pulse-angle),
+        transparent 0deg 104deg, #0b809933 111deg, #1bcfeab3 128deg,
+        #63f6ff 138deg, #efffff 140deg 144deg, transparent 145deg 150deg,
+        #57efff 151deg 154deg, transparent 155deg 160deg,
+        #25bccc99 161deg 164deg, transparent 165deg 180deg), #358b99;
+    animation: titanium-pulse-orbit 5.6s linear infinite;
+    animation-play-state: var(--titanium-pulse-play-state);
+    /* hollow octagon: outer edge at the 14px chamfer, 2px band */
+    clip-path: polygon(evenodd,
+        14px 0, calc(100% - 14px) 0, 100% 14px, 100% calc(100% - 14px),
+        calc(100% - 14px) 100%, 14px 100%, 0 calc(100% - 14px), 0 14px, 14px 0,
+        15px 2px, 2px 15px, 2px calc(100% - 15px), 15px calc(100% - 2px),
+        calc(100% - 15px) calc(100% - 2px), calc(100% - 2px) calc(100% - 15px),
+        calc(100% - 2px) 15px, calc(100% - 15px) 2px, 15px 2px);
+}
+/* Stagger them so the whole page does not pulse in lockstep. */
+#displaybox .TableContainer:nth-of-type(2n)::after { animation-delay: -1.9s; }
+#displaybox .TableContainer:nth-of-type(3n)::after { animation-delay: -3.7s; }
+div.title:nth-of-type(2n)::before { animation-delay: -2.6s; }
+
+/* Title bars: swap the gradient corner-cut for the same chamfer as the panels,
+   so the ring has a matching edge to follow. */
+div.title, div#title {
+    background: linear-gradient(168deg, #2a4150 0%, #1b2b36 45%, #101c25 100%);
+    clip-path: polygon(14px 0, calc(100% - 14px) 0, 100% 14px,
+        100% calc(100% - 14px), calc(100% - 14px) 100%, 14px 100%,
+        0 calc(100% - 14px), 0 14px);
+    filter: drop-shadow(0 6px 9px #0009);
+}
+@media (prefers-reduced-motion: reduce) {
+    #displaybox .TableContainer::after,
+    #displaybox .TableContainer--no-min-width::after,
+    div.title::before, div#title::before { animation: none !important; }
+}
+@media print {
+    #displaybox .TableContainer::after,
+    #displaybox .TableContainer--no-min-width::after,
+    div.title::before, div#title::before { display: none; }
+}
+
+/* ===== v1.8 (local) — outer bloom around every panel =====
+   The rings light the edge; this adds the halo spilling out from it. Layered
+   drop-shadows rather than box-shadow, so the glow follows the chamfered
+   silhouette instead of a rectangle — and filter output is not clipped by the
+   container's own overflow, unlike a pseudo-element would be. */
+#displaybox .TableContainer,
+#displaybox .TableContainer--no-min-width {
+    filter:
+        drop-shadow(1px 0 0 #4b8fa0) drop-shadow(-1px 0 0 #4b8fa0)
+        drop-shadow(0 1px 0 #4b8fa0) drop-shadow(0 -1px 0 #4b8fa0)
+        drop-shadow(0 0 9px #22dcef47)
+        drop-shadow(0 0 24px #16cfde2b)
+        drop-shadow(0 10px 14px #000a);
+}
+div.title, div#title {
+    filter:
+        drop-shadow(0 0 8px #2ad4e952)
+        drop-shadow(0 0 20px #16cfde26)
+        drop-shadow(0 6px 9px #0009);
+}
+table.dashboard > tbody {
+    filter:
+        drop-shadow(0 0 9px #22dcef52)
+        drop-shadow(0 0 22px #16cfde2b)
+        drop-shadow(0 11px 13px #000a);
+}

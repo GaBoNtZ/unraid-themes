@@ -1,6 +1,6 @@
-# TITANIUM — Unraid webGUI theme
+# TITANIUM Deep Space — Unraid webGUI theme
 
-Deep navy, cyan energy rails, animated card rings
+Rounded 3D titanium, smoked glass and animated cyan energy rails
 
 ![TITANIUM dashboard](dashboard.gif)
 
@@ -17,10 +17,11 @@ Deep navy, cyan energy rails, animated card rings
 </details>
 
 ## What it looks like
-The full-fat option. Layered navy panels with a brushed-metal feel, cyan accent rails along
-the header and section titles, animated "pulse" rings that orbit each dashboard card, rounded
-cards, gradient usage bars that keep Unraid's green/orange/red threshold meaning, and themed
-SweetAlert dialogs, jGrowl toasts, Community Applications surfaces and unraid-ui web components.
+The full-fat option. Layered navy panels now sit inside rounded, machined titanium frames with
+smoked-glass wells, cyan accent rails along the header and section titles, and animated pulse
+rings that orbit each dashboard card. Gradient usage bars keep Unraid's green/orange/red
+threshold meaning. SweetAlert dialogs, jGrowl toasts, Community Applications surfaces and
+unraid-ui web components share the same material system.
 
 Shared with every theme in this repo: page gutters that stay visible instead of collapsing on
 narrow windows, wide tables that scroll inside their own box (so the page never slides sideways),

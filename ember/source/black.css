@@ -1,0 +1,704 @@
+/* EMBER v1.0 — Unraid 7.2.4. Orange build of TITANIUM (palette after getwayland.com). Theme only; no scripts or layout templates. */
+:root {
+    /* Core surfaces */
+    --modern-bg: #0c0a11;
+    --modern-bg-deep: #08060c;
+    --modern-surface: #1a1828;
+    --modern-surface-2: #241f33;
+    --modern-surface-3: #2e2740;
+    --modern-border: #4a3f52;
+    --modern-border-soft: rgba(208, 177, 157, 0.25);
+    --modern-text: #f4f1e8;
+    --modern-text-muted: #b8b3a8;
+    --modern-blue: #ff6b35;
+    --modern-blue-strong: #d2470f;
+    --modern-cyan: #ffcaa8;
+    --modern-green: #22c55e;
+    --modern-orange: #ffc94a;
+    --modern-red: #ff5a5f;
+    --modern-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+
+    /* Theme variables consumed by default-base.css */
+    --text-color: var(--modern-text);
+    --blockquote-text-color: var(--modern-text-muted);
+    --alt-text-color: var(--modern-text-muted);
+    --disabled-text-color: #a69689;
+    --inverse-text-color: var(--modern-text);
+    --link-text-color: var(--modern-blue);
+
+    --background-color: var(--modern-bg);
+    --opac-background-color: rgba(20, 15, 10, 0.95);
+    --mild-background-color: var(--modern-surface);
+    --usage-bar-background-color: #2a1e14;
+    --usage-bar-used-background-color: var(--modern-blue);
+    --usage-disk-background-color: #201710;
+    --inverse-background-color: var(--modern-text);
+    --radio-background-color: #2a1e14;
+    --dashboard-background-color: var(--modern-surface);
+    --dashboard-title-action-color: rgba(238, 138, 86, 0.12);
+    --dashboard-icon-color: #eccfc0;
+
+    --border-color: var(--modern-border);
+    --disabled-border-color: #55463a;
+    --input-border-color: var(--modern-border);
+    --disabled-input-border-color: #55463a;
+    --textarea-border-color: var(--modern-border);
+    --inverse-border-color: rgba(212, 180, 160, 0.25);
+    --table-border-color: var(--modern-border-soft);
+    --table-background-color: rgba(42, 32, 24, 0.72);
+    --table-header-background-color: rgba(56, 44, 34, 0.92);
+    --hover-table-row-background-color: rgba(238, 138, 86, 0.08);
+
+    --footer-text: var(--modern-text-muted);
+    --footer-background-color: rgba(20, 15, 10, 0.96);
+
+    --small-shadow: var(--modern-shadow);
+    --hr-color: var(--modern-border);
+    --checkbox-color: #b5a395;
+    --checkbox-hover-color: var(--modern-blue);
+
+    --brand-orange: var(--orange-500);
+    --brand-red: var(--red-800);
+
+    --header-text-color: var(--modern-text);
+    --header-background-color: #1b130c;
+    --title-header-background-color: rgba(56, 44, 34, 0.88);
+
+    --scrollbar-color: #6c5646;
+    --scrollbar-hover-color: #947864;
+    --bg-opacity-10: rgba(0, 0, 0, 0.10);
+    --bg-opacity-30: rgba(0, 0, 0, 0.30);
+
+    --button-text-color: #f7e9e0;
+    --button-border: var(--modern-border);
+    --button-background: rgba(56, 44, 34, 0.9);
+    --button-background-size: cover;
+    --hover-button-border: var(--modern-blue);
+    --hover-button-text-color: #ffffff;
+    --hover-button-background: linear-gradient(135deg, var(--modern-blue-strong), var(--modern-blue));
+
+    --input-bg-color: #1d140d;
+    --focus-input-bg-color: #382c22;
+    --shade-bg-color: rgba(42, 32, 24, 0.78);
+
+    /* Dynamix variables */
+    --dynamix-filetree-bg-color: var(--modern-bg-deep);
+    --dynamix-box-text-color: var(--modern-text);
+    --dynamix-box-inner-div-border-color: var(--modern-border-soft);
+    --dynamix-tablesorter-thead-row-border-color: var(--modern-border);
+    --dynamix-tablesorter-thead-th-text-color: #d8c8bd;
+    --dynamix-tablesorter-thead-th-bg-color: var(--modern-surface-2);
+    --dynamix-tablesorter-tbody-row-bg-color: rgba(42, 32, 24, 0.66);
+    --dynamix-tablesorter-tbody-row-alt-bg-color: rgba(42, 32, 24, 0.55);
+    --dynamix-tablesorter-tbody-row-border-color: var(--modern-border-soft);
+    --dynamix-select-bg-color: var(--modern-bg-deep);
+    --dynamix-select-disabled-bg-color: #30241a;
+}
+
+
+/* Material tokens and plugin colour contracts. */
+html:root {
+    --titanium-panel: linear-gradient(135deg, #3f3227 0%, #2c2118 42%, #221911 100%);
+    --titanium-raised: linear-gradient(165deg, #534133, #33251a 48%, #271b11);
+    --titanium-edge: rgba(203, 173, 153, .62);
+    --titanium-shadow: inset 0 1px 1px #ffede06b, inset 1px 0 1px #d7bead2b,
+        inset 0 -1px 1px #000000bb, 0 3px 0 #100a05, 0 9px 18px #00000088;
+    --titanium-green: linear-gradient(180deg, #70eaa6 0%, #35d77d 30%, #189853 100%);
+    --titanium-orange: linear-gradient(180deg, #ffce83 0%, #ffab47 30%, #d57b1b 100%);
+    --titanium-red: linear-gradient(180deg, #ff9ba4 0%, #ff6775 30%, #d33545 100%);
+    --titanium-gray: linear-gradient(180deg, #b9a89c, #7d6757);
+    --template-background: #2c2118;
+    --template-hover-background: #413125;
+    --template-favourite: #503929;
+    --border-color: #614f42;
+    --sidebar-background: #19110b;
+    --ca-dark-bg-color: #201710;
+    --ca-medium-bg-color: #3c2e23;
+    --chart-grid: #483527;
+    --header-text-primary: #faf3ed;
+    --header-text-secondary: #ccbdb1;
+}
+
+html, body { background: radial-gradient(ellipse at 50% 0, #3d2e2266, transparent 65rem), var(--modern-bg); }
+#header { border-bottom: 1px solid #b3937e77; box-shadow: 0 4px 18px #00000077; }
+/* Keep native identity controls in their original flow. Artwork is a separate selectable banner. */
+#header.image { background-size: cover; background-position: center 52%; min-height: 128px; }
+#header .block, #header .block a, #header .text-left, #header .text-right,
+#header .text-right a, #header .text-right #licensetype { color: var(--modern-text) !important; }
+#header .text-left { border-right-color: var(--modern-orange); }
+.nav-tile { background: linear-gradient(180deg, #3e3026, #271c14 45%, #1a120c); border-bottom: 1px solid #816958; box-shadow: inset 0 1px #dec6b633, 0 5px 10px #00000066; }
+.nav-item a, .nav-user a { color: #d6c5b9; transition: color .16s, background-color .16s; }
+.nav-item:hover a, .nav-item:focus-within a, .nav-user:hover a { color: #fff7f3; background: #ed8f6010; }
+.nav-item.active a { color: #ffffff; }
+.nav-item.active:after { height: 3px; background: #ee8a56; box-shadow: 0 0 8px #ee8a5699; }
+#displaybox { padding: 1.6rem 1.4rem 4.2rem; }
+#displaybox a:link, #displaybox a:visited { color: #e9a583; }
+#displaybox a:hover { color: #ffdcc9; }
+
+/* Each existing row-group becomes its own table box. DOM, sortable items,
+   native rows, visibility controls, and column structure remain intact. */
+table.dashboard { display: block; border-collapse: separate; border-spacing: 0; width: 100%; }
+table.dashboard > tbody {
+    display: table; table-layout: fixed; width: 100%; box-sizing: border-box;
+    margin: 0 0 22px; border-collapse: separate; border-spacing: 0;
+    border: 1px solid var(--titanium-edge); border-radius: 12px;
+    background: var(--titanium-panel); box-shadow: var(--titanium-shadow);
+}
+table.dashboard > tbody > tr > td { background: transparent; border: 0; }
+table.dashboard > tbody > tr:first-child > td {
+    background: linear-gradient(180deg, #50403599, #3d2f2455 36%, #251b1277);
+    border-top: 1px solid #eeddd24d; border-bottom: 1px solid #150e08;
+    border-radius: 11px 11px 0 0; box-shadow: inset 0 -1px #98817133;
+}
+table.dashboard > tbody > tr:last-child > td { border-radius: 0 0 11px 11px; padding-bottom: 12px; }
+table.dashboard > tbody > tr:only-child > td { border-radius: 11px; }
+table.dashboard > tbody > tr.header > td { background: #170f0866; color: #d8cabf; border-top: 1px solid #977a6622; border-bottom: 1px solid #00000066; }
+table.dashboard > tbody > tr.updated:nth-child(even) > td { background: #130c072b; }
+table.dashboard .tile-header-main { color: #faf3ed; letter-spacing: .025em; }
+table.dashboard .control {
+    border: 1px solid #856b58; border-radius: 5px; color: #f2d5c4;
+    background: var(--titanium-raised); box-shadow: inset 0 1px #ffe6d340, 0 2px 3px #00000088;
+}
+table.dashboard .control:hover { color: #ffffff; border-color: #ee8a56; box-shadow: inset 0 1px #ffe6d366, 0 0 5px #ee8a5644; }
+table.dashboard .outer.solid { box-sizing: border-box; border: 1px solid #604c3d5c; border-radius: 7px; background: linear-gradient(180deg, #2c1f15, #1f150d); box-shadow: inset 0 1px #e5caba1c, 0 2px 3px #00000044; }
+table.dashboard .outer.solid:hover { border-color: #ee8a5688; background: #38281c; }
+img#mycase { filter: drop-shadow(0 8px 5px #00000099); }
+.tile-select-case { cursor: pointer; }
+/* No image replacement through CSS: the native picker continues to select any case. */
+
+div.title, div#title {
+    border: 1px solid var(--titanium-edge); border-radius: 9px;
+    background: var(--titanium-raised); box-shadow: var(--titanium-shadow);
+}
+.TableContainer, .TableContainer--no-min-width {
+    border: 1px solid #756050; border-radius: 10px;
+    background: #201710; box-shadow: inset 0 1px 4px #000000bb, 0 4px 12px #00000055;
+}
+table.unraid, table.tablesorter, table.disk_status, table.array_status, table.share_status { border-collapse: separate; border-spacing: 0; }
+table.unraid thead tr, table.tablesorter thead tr { background: linear-gradient(180deg, #48392e, #33261b); }
+table.unraid thead td, table.tablesorter thead th { color: #e4d8d0; letter-spacing: .035em; }
+table.unraid tbody tr:hover, table.tablesorter tbody tr:hover { background: #ee8a560d !important; }
+
+/* Native state owns colour. No percentages or application state are inferred here.
+   Low CPU state has no class; Dynamix's .sys fallback is healthy green. */
+.usage-bar, .usage-disk, .mybar {
+    border-radius: 999px; overflow: hidden; background-color: #160e08;
+    box-shadow: inset 0 1px 3px #000000, inset 0 0 0 1px #7f655399;
+}
+.usage-bar > span, .usage-disk > span:first-child { border-radius: inherit; box-shadow: inset 0 1px #ffffff40; }
+.usage-disk.sys > span:first-child:not(.greenbar):not(.orangebar):not(.redbar):not(.graybar) { background: var(--titanium-green); }
+.greenbar, .usage-disk > span.greenbar, .usage-bar > span.greenbar { background: var(--titanium-green) !important; }
+.orangebar, .usage-disk > span.orangebar, .usage-bar > span.orangebar { background: var(--titanium-orange) !important; }
+.redbar, .usage-disk > span.redbar, .usage-bar > span.redbar { background: var(--titanium-red) !important; }
+.graybar, .usage-disk > span.graybar, .usage-bar > span.graybar { background: var(--titanium-gray) !important; }
+.mybar * { border-radius: inherit; }
+
+/* jQuery switchButton owns .checked; do not infer state from label text.
+   Explicit importance beats the component sheet loaded after the theme. */
+.switch-button-background { background: #625246; border-color: #9f8a7c; box-shadow: inset 0 1px 3px #00000088; }
+.switch-button-background.checked {
+    background: var(--titanium-green) !important;
+    border-color: #63dd95 !important;
+    box-shadow: inset 0 1px #b5ffcc66, 0 0 5px #35d77d33;
+}
+.switch-button-background.checked + .switch-button-label.on,
+.switch-button-background.checked + .switch-button-label.off + .switch-button-label.on,
+.switch-button-label.on:has(+ .switch-button-background.checked) { color: #70eaa6 !important; }
+.switch-button-button { background: linear-gradient(180deg, #ffffff, #e3d8d0); border-color: #c7b4a6; }
+
+input[type=text], input[type=password], input[type=number], input[type=url],
+input[type=email], input[type=date], input[type=file], textarea, .textarea, select {
+    border-radius: 6px; background-color: var(--input-bg-color); box-shadow: inset 0 2px 4px #00000088;
+}
+input[type=button], input[type=reset], input[type=submit], button, a.button {
+    border-radius: 6px; box-shadow: inset 0 1px #edd3c233, 0 3px 5px #00000066;
+}
+input[type=button]:not(:disabled), input[type=submit]:not(:disabled), a.button {
+    border: 1px solid #7d6452; background: var(--titanium-raised); color: #f3e1d6;
+}
+input[type=button]:hover:not(:disabled), input[type=submit]:hover:not(:disabled), a.button:hover { border-color: #ee8a56; color: #ffffff; }
+:is(a,button,input,select,textarea):focus-visible { outline: 2px solid #f3a077; outline-offset: 3px; }
+input:disabled, button:disabled { opacity: .55; }
+.tabs button[role=tab] { border-radius: 7px 7px 0 0; color: #d8c9be; background: #2e2117; }
+.tabs button[role=tab][aria-selected=true] { color: #fff4ed; border-color: #ee8a56; background: #493426; }
+.Panel a, div.box { border-radius: 9px; }
+.Panel a:hover, .Panel a:focus-visible { background: #ee8a560d; }
+.shade, div.up { border-color: #614f42; border-radius: 9px; background: #281c13; }
+#footer { background: #1b130bf5; color: #ccbdb1; border-top: 1px solid #836a58; box-shadow: 0 -3px 10px #00000088; }
+.Theme--sidebar #menu { background: #1c130c; border-right: 1px solid #614f42; }
+
+/* Preserve colour meaning across plugin surfaces and notifications. */
+.green-text, .passed { color: var(--modern-green) !important; }
+.orange-text, .warning { color: var(--modern-orange) !important; }
+.red-text, .failed { color: var(--modern-red) !important; }
+.blue-text { color: var(--modern-cyan) !important; }
+img.ca_displayIcon, img.popupIcon { background-color: #3d2d20; }
+div.jGrowl div.jGrowl-notification, div.jGrowl div.jGrowl-closer {
+    background: var(--titanium-panel); border: 1px solid #a68b78;
+    border-radius: 10px; color: var(--modern-text); box-shadow: var(--titanium-shadow);
+}
+div.jGrowl div.jGrowl-notification .jGrowl-header { color: #f3dfd2; }
+div.jGrowl div.jGrowl-notification .jGrowl-close { color: #ccbdb1; }
+/* Native confirmation / case dialogs and SweetAlert2 plugin dialogs.
+   Keep their handlers, labels, warning semantics, visibility and geometry. */
+html .sweet-alert, html .swal2-popup {
+    background: #2c2118 !important; color: #faf3ed;
+    border: 1px solid #b59c8a; border-radius: 12px;
+    box-shadow: var(--titanium-shadow), 0 20px 70px #000000bb;
+}
+html .sweet-alert h2, html .swal2-title { color: #faf3ed !important; }
+html .sweet-alert p, html .swal2-html-container, html .swal2-content { color: #e1d1c5 !important; }
+html .sweet-alert button.confirm, html .swal2-confirm {
+    background: var(--titanium-raised) !important; color: #fff0e8 !important;
+    border: 1px solid #dd9069; box-shadow: inset 0 1px #ffe6d744, 0 3px 6px #00000077;
+}
+html .sweet-alert button.cancel, html .swal2-cancel {
+    background: linear-gradient(180deg, #4c3e34, #352920) !important; color: #ebe1d9 !important;
+    border: 1px solid #a39082; box-shadow: inset 0 1px #ffe6d722, 0 3px 6px #00000077;
+}
+html .sweet-alert .sa-icon.sa-warning { border-color: #ffab47; }
+html .sweet-alert .sa-icon.sa-warning .sa-body,
+html .sweet-alert .sa-icon.sa-warning .sa-dot { background-color: #ffab47; }
+html .sweet-alert .sa-icon.sa-info { border-color: #f3a077; }
+html .sweet-alert .sa-icon.sa-info::before, html .sweet-alert .sa-icon.sa-info::after { background-color: #f3a077; }
+html .sweet-alert .sa-icon.sa-success::before, html .sweet-alert .sa-icon.sa-success::after,
+html .sweet-alert .sa-icon.sa-success .sa-fix { background: #2c2118; }
+html .sweet-alert .sa-icon.sa-error { border-color: #ff6775; }
+html .sweet-alert .sa-icon.sa-error .sa-line { background-color: #ff6775; }
+html .sweet-overlay { background-color: #0b070399; }
+.ca_holder { border-radius: 10px; box-shadow: inset 0 1px #ebd5c633, 0 4px 10px #00000055; }
+.unapi.dark, .unapi.dark[data-theme=black], .unapi.dark[data-theme=gray] {
+    --background: 210 25% 11%; --card: 209 24% 15%; --popover: 209 24% 15%;
+    --border: 205 21% 30%; --muted: 207 23% 18%; --input: 210 25% 12%;
+}
+table.usb_mounts thead tr:first-child td, table.usb_absent thead tr:first-child td,
+table.samba_mounts thead tr:first-child td { background-color: var(--modern-surface-2) !important; }
+table.usb_mounts tbody tr:nth-child(even), table.usb_absent tbody tr:nth-child(even),
+table.samba_mounts tbody tr:nth-child(even) { background-color: #ffffff08 !important; }
+table.usb_mounts tbody tr:nth-child(odd), table.usb_absent tbody tr:nth-child(odd),
+table.samba_mounts tbody tr:nth-child(odd) { background-color: transparent !important; }
+table.usb_mounts tbody tr:hover, table.usb_absent tbody tr:hover,
+table.samba_mounts tbody tr:hover { background-color: var(--hover-table-row-background-color) !important; }
+* { scrollbar-color: #7f6552 #19110b; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #19110b; }
+::-webkit-scrollbar-thumb { border: 2px solid #19110b; border-radius: 999px; background: #7f6552; }
+
+@media(max-width:767px) {
+    #header.image { min-height: 108px; background-position: center 52%; }
+    #displaybox { padding: 1rem 1rem 4.2rem; }
+    table.dashboard > tbody { margin-bottom: 16px; }
+}
+@media(prefers-reduced-motion:reduce) {
+    .nav-item a, .nav-user a { transition: none; }
+}
+/* Unraid 7.2.4 API / Reka dialogs, including the OS update notice.
+   Scoped to the observed .unapi portal; native dialog actions remain intact. */
+.unapi [role="dialog"] {
+    --background: 210 29% 13% !important;
+    --foreground: 208 57% 95% !important;
+    --muted: 207 24% 21% !important;
+    --muted-foreground: 207 21% 75% !important;
+    --input: 207 24% 21% !important;
+    --border: 205 19% 32% !important;
+    --accent: 203 27% 25% !important;
+    --accent-foreground: 208 57% 95% !important;
+    --primary: 189 82% 64% !important;
+    --primary-foreground: 210 40% 9% !important;
+    --destructive: 354 100% 70% !important;
+    --ring: 189 82% 64% !important;
+    background: #2c2118 !important;
+    color: #faf3ed !important;
+    border: 1px solid #766153 !important;
+    border-radius: 16px !important;
+    box-shadow: inset 0 1px 0 rgba(255, 233, 219, .24), 0 24px 70px rgba(0, 0, 0, .65) !important;
+}
+.unapi [role="dialog"] .from-unraid-red.to-orange {
+    background: linear-gradient(145deg, #664936, #372417) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 222, 204, .45), 0 2px 7px rgba(0, 0, 0, .4) !important;
+}
+.unapi [role="dialog"].inset-y-0 {
+    border-radius: 0 !important;
+}
+.unapi [role="dialog"] .bg-primary,
+.unapi [role="dialog"] [role="tab"][aria-selected="true"] {
+    background: linear-gradient(145deg, #664936, #372417) !important;
+    color: #faf3ed !important;
+    box-shadow: inset 0 1px 0 rgba(255, 222, 204, .4), 0 2px 5px rgba(0, 0, 0, .3) !important;
+}
+.unapi [role="dialog"] .divide-y > * {
+    border-color: #614f42 !important;
+}
+.unapi [role="switch"][aria-checked="true"] {
+    background: linear-gradient(180deg, #35d77d, #18b965) !important;
+}
+.unapi [role="switch"][aria-checked="false"] {
+    background: #473629 !important;
+}
+.unapi [role="switch"] > span {
+    background: linear-gradient(180deg, #fff8f3, #d8c8bd) !important;
+}
+
+/* TITANIUM PULSE — decorative motion only, layered over verified Titanium.
+   No usage fill, threshold, switch, case, popup or application state changes. */
+@property --titanium-pulse-angle {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+}
+html:root {
+    --titanium-pulse-play-state: running;
+    --titanium-pulse-cyan: #f67b41;
+}
+body {
+    background-image:
+        radial-gradient(ellipse at 50% 0, #532c1766, transparent 70rem),
+        linear-gradient(#ed703504 1px, transparent 1px),
+        linear-gradient(90deg, #ed703504 1px, transparent 1px);
+    background-size: auto, 48px 48px, 48px 48px;
+}
+
+/* Keep each panel's original geometry. Two concentric tracks occupy the
+   existing gutters; their transparent centres never cover the contents. */
+table.dashboard > tbody {
+    position: relative;
+    border: 1px solid transparent;
+    border-radius: 0;
+    background: transparent;
+    isolation: isolate;
+    box-shadow: none;
+    filter: drop-shadow(0 0 4px #ef642233) drop-shadow(0 7px 8px #00000088);
+}
+table.dashboard > tbody::before,
+table.dashboard > tbody::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    border-radius: 0;
+    box-sizing: border-box;
+    z-index: 1;
+    /* Hollow eight-sided frame. Only the pseudo-element is clipped;
+       the card and every native control retain visible overflow. */
+    clip-path: polygon(evenodd,
+        16px 0, calc(100% - 16px) 0, 100% 16px, 100% calc(100% - 16px),
+        calc(100% - 16px) 100%, 16px 100%, 0 calc(100% - 16px), 0 16px, 16px 0,
+        17px 2px, 2px 17px, 2px calc(100% - 17px), 17px calc(100% - 2px),
+        calc(100% - 17px) calc(100% - 2px), calc(100% - 2px) calc(100% - 17px),
+        calc(100% - 2px) 17px, calc(100% - 17px) 2px, 17px 2px);
+}
+table.dashboard > tbody::before {
+    inset: -1px;
+    z-index: -1;
+    background: linear-gradient(135deg, #4e3a2c, #36261b 35%, #261910);
+    box-shadow: inset 0 1px 2px #f5d2c066, inset 0 0 0 1px #835e49;
+    clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 12px,
+        100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%,
+        0 calc(100% - 12px), 0 12px);
+}
+/* Clip the centre out of the moving gradient: only the 2px track is painted.
+   The bright head, teal tail and two small trailing packets repeat opposite
+   each other. No blur/filter is applied to any text or panel content. */
+@supports (background: conic-gradient(from 0deg, transparent, cyan)) {
+    table.dashboard > tbody::after {
+        inset: -7px;
+        background: repeating-conic-gradient(from var(--titanium-pulse-angle),
+            transparent 0deg 104deg, #993d0b33 111deg, #ea601bb3 128deg,
+            #ff9463 138deg, #fff4ef 140deg 144deg, transparent 145deg 150deg,
+            #ff8d57 151deg 154deg, transparent 155deg 160deg,
+            #cc5b2599 161deg 164deg, transparent 165deg 180deg), #995735;
+        animation: titanium-pulse-orbit 5.6s linear infinite;
+        animation-play-state: var(--titanium-pulse-play-state);
+    }
+}
+table.dashboard > tbody:nth-of-type(2n)::after { animation-delay: -1.4s; }
+table.dashboard > tbody:nth-of-type(3n)::after { animation-delay: -2.8s; }
+table.dashboard > tbody:nth-of-type(5n)::after { animation-delay: -4.2s; }
+table.dashboard > tbody > tr:first-child > td {
+    background: transparent;
+    border-top-color: transparent;
+    border-radius: 0;
+    box-shadow: inset 0 -1px #e5774536;
+}
+table.dashboard > tbody > tr:last-child > td { background: transparent; border-radius: 0; }
+table.dashboard .control { border-color: #a37055; }
+
+/* Main and plugin section headings get straight energy rails. The data tables
+   retain their original backgrounds and colour semantics. */
+div.title, div#title {
+    position: relative;
+    border: 1px solid transparent;
+    border-radius: 0;
+    background: linear-gradient(135deg, transparent 8px, #3c291c 8px) left / 51% 100% no-repeat,
+        linear-gradient(315deg, transparent 8px, #3c291c 8px) right / 51% 100% no-repeat;
+    box-shadow: none;
+    filter: drop-shadow(0 1px 0 #ac6c4b) drop-shadow(0 3px 5px #00000088);
+}
+div.title::after, div#title::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    left: 12px;
+    right: 12px;
+    bottom: -1px;
+    height: 2px;
+    border-radius: 2px;
+    background: repeating-linear-gradient(90deg, transparent 0 130px,
+        #e9692a66 152px, #ffa479 174px, #fff4ef 180px 188px,
+        transparent 190px 204px, #ff9765 206px 213px, transparent 216px 320px);
+    background-size: 320px 2px;
+    box-shadow: 0 0 6px #f265204d;
+    animation: titanium-pulse-stream 2.8s linear infinite;
+    animation-play-state: var(--titanium-pulse-play-state);
+}
+.TableContainer, .TableContainer--no-min-width {
+    border-color: #865e47;
+    box-shadow: inset 0 1px 4px #000000bb, 0 4px 12px #00000055, 0 0 8px #de551612;
+}
+
+/* Selectable native banner remains untouched. Add light rails at its edges. */
+#header::before, #header::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    left: 0;
+    right: 0;
+    height: 2px;
+    z-index: 1;
+    background: repeating-linear-gradient(90deg, #8e411a55 0 90px,
+        #ed6725 155px, #fff0ea 177px 188px, #f97f45 189px 211px,
+        transparent 213px 228px, #ffc0a3 230px 238px, transparent 240px 320px);
+    background-size: 320px 2px;
+    box-shadow: 0 0 5px #ffae8c, 0 0 15px #ee652077;
+    animation: titanium-pulse-stream 2.8s linear infinite;
+    animation-play-state: var(--titanium-pulse-play-state);
+}
+#header::before { top: 1px; opacity: .6; animation-direction: reverse; }
+#header::after { bottom: 0; }
+.nav-tile { border-bottom-color: #b6653c; box-shadow: inset 0 1px #dec6b633, 0 2px 10px #e0490022; }
+.nav-item.active:after { box-shadow: 0 0 5px #ffccb4, 0 0 14px #ec6729; }
+
+@keyframes titanium-pulse-orbit { to { --titanium-pulse-angle: 360deg; } }
+@keyframes titanium-pulse-stream { to { background-position-x: 320px; } }
+
+/* Native accessibility preference stops every Pulse animation. A separate
+   motion-off build also sets the play-state variable to paused. */
+@media (prefers-reduced-motion: reduce) {
+    table.dashboard > tbody::after, div.title::after, div#title::after,
+    #header::before, #header::after { animation: none !important; }
+}
+@media (max-width: 767px) {
+    table.dashboard > tbody::after { inset: -4px; }
+}
+@media print {
+    table.dashboard > tbody::before, table.dashboard > tbody::after,
+    div.title::after, div#title::after, #header::before, #header::after { display: none; }
+}
+
+/* ===== Local patches (v1.1–v1.3) — layout only, card/panel metrics untouched =====
+   Original TITANIUM gutter was 1.4rem = 14px (Unraid's root font is 10px), which
+   reads as no margin at all. These widen the page gutter without touching any
+   card, table, font or spacing value inside the content column. */
+
+/* v1.3 — stable outer gutters. clamp() instead of rem + breakpoints: rem tracks
+   Unraid's 10px root (so 3rem was only 30px) and the old @media steps collapsed
+   the gutter on narrower windows, which is why Firefox lost its margins first. */
+#displaybox { padding-left: clamp(28px, 3.7vw, 76px); padding-right: clamp(28px, 3.7vw, 76px); }
+
+/* v1.2 — wide tables scroll inside their own box so the page never scrolls
+   sideways (page-level overflow is what ate the gutters). Stock containment,
+   restated defensively; table min-width stays at the original 1000px. */
+#displaybox .TableContainer,
+#displaybox .TableContainer--no-min-width { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+@media (min-width: 768px) {
+    /* desktop only — on phones Unraid reflows these tables to fit, and forcing
+       1000px left the visible column area blank (regression, now scoped) */
+    #displaybox .TableContainer > table { min-width: 1000px; }
+}
+
+/* ===== v1.4 (local) — mobile pass, verified against iPhone 14 mini (375pt) ===== */
+@media (max-width: 767px) {
+
+    /* #3 banner — `cover` on a ~10:1 strip zooms it hard on a phone and buries
+       the identity row. Show the whole artwork across the top instead. */
+    #header.image {
+        background-size: 100% auto;
+        background-position: center top;
+        background-repeat: no-repeat;
+        min-height: 96px;
+    }
+
+    /* #4 section panels — these are transparent over the page background, which
+       reads as flat black on a phone. Give them the theme's panel surface. */
+    #displaybox div.content:not(:has(.grid)) {
+        background: var(--titanium-panel, var(--modern-surface));
+        border: 1px solid var(--titanium-edge, var(--modern-border));
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 14px;
+    }
+
+    /* #1 device tables — stock pins them to 1000px with no mobile override, so a
+       phone only ever sees the left slice of the table. Let them reflow.
+       (Deliberate deviation from stock, owner-approved.) */
+    #displaybox .TableContainer > table,
+    #displaybox .TableContainer--no-min-width > table { min-width: 0; }
+    #displaybox .TableContainer td,
+    #displaybox .TableContainer th { overflow-wrap: anywhere; }
+
+    /* #5 Community Applications — its own sheets overrun the viewport, and iOS
+       paints controls the theme never styled with native light chrome. */
+    #displaybox [class*="ca_"] { max-width: 100%; }
+    #displaybox .ca_holder,
+    #displaybox .ca_appPopup { overflow-wrap: anywhere; }
+    #displaybox button,
+    #displaybox input[type="button"],
+    #displaybox input[type="submit"],
+    #displaybox input[type="reset"] {
+        -webkit-appearance: none;
+        appearance: none;
+        background: var(--button-background, #2f2116);
+        color: var(--button-text-color, #ffe2cd);
+        border: 1px solid var(--button-border, #756050);
+        border-radius: 8px;
+    }
+}
+
+/* v1.5 (local) — the dashboard's wrapper (div.content) carries overflow:auto,
+   which clipped each card's 7px pulse ring where it sits nearest the wrapper
+   edge: the outer sides of the left- and right-hand columns. Only the
+   dashboard grid needs the ring to escape; Main keeps its scroll containment
+   (its wide tables still scroll inside .TableContainer, see v1.2). */
+#displaybox div.content:has(.grid) { overflow: visible; }
+
+/* ===== v1.6 (local) — chamfer everywhere + deeper glass =====
+   The cut-corner treatment previously existed only on dashboard cards and
+   section title bars; the data panels on Main/Shares/Users/Settings kept plain
+   rounded corners. Same octagon geometry is applied to them here.
+   The outline is drawn with four 1px drop-shadows rather than a border, because
+   a border follows the rectangle and would leave the chamfered edges bare. */
+#displaybox .TableContainer,
+#displaybox .TableContainer--no-min-width {
+    border: 0;
+    border-radius: 0;
+    background: linear-gradient(168deg, #473426 0%, #2f2116 28%, #23170e 68%, #181009 100%);
+    box-shadow:
+        inset 0 1px 0 #ffe9dc8c,           /* top highlight  */
+        inset 0 3px 12px #eab18f24,        /* inner sheen    */
+        inset 0 -24px 30px -22px #000000dd;    /* lower shading  */
+    clip-path: polygon(14px 0, calc(100% - 14px) 0, 100% 14px,
+        100% calc(100% - 14px), calc(100% - 14px) 100%, 14px 100%,
+        0 calc(100% - 14px), 0 14px);
+    filter:
+        drop-shadow(1px 0 0 #a0694b) drop-shadow(-1px 0 0 #a0694b)
+        drop-shadow(0 1px 0 #a0694b) drop-shadow(0 -1px 0 #a0694b)
+        drop-shadow(0 10px 14px #000000aa);
+}
+
+/* Deeper smoked glass in the dashboard cards, brighter internal highlight,
+   heavier shadow underneath. Geometry untouched. */
+table.dashboard > tbody::before {
+    background: linear-gradient(168deg, #5f4533 0%, #3e2c1e 26%, #2b1e13 62%, #1a110a 100%);
+    box-shadow:
+        inset 0 1px 0 #ffede29e,
+        inset 0 3px 12px #eebd9f29,
+        inset 0 -26px 32px -22px #000000ee,
+        inset 0 0 0 1px #8d644d;
+}
+table.dashboard > tbody {
+    filter: drop-shadow(0 0 4px #ef642233) drop-shadow(0 11px 13px #000000aa);
+}
+
+/* The data tables paint an opaque rectangle over their container, which hid the
+   chamfer and the glass behind it. Let the container's surface show through;
+   header row and hover states keep their own colours. */
+#displaybox .TableContainer > table,
+#displaybox .TableContainer--no-min-width > table,
+#displaybox .TableContainer > table > tbody,
+#displaybox .TableContainer--no-min-width > table > tbody { background: transparent; }
+
+/* ===== v1.7 (local) — full outer energy lines on every panel =====
+   Dashboard cards already orbit a pulse ring; section titles only had a rail
+   under them and the data panels had none. Both now carry the full perimeter
+   ring, using the card's own gradient, cadence and play-state token.
+   The ring sits at inset 0 (not outside the box) because these containers
+   scroll, and anything drawn beyond their edge would be clipped away. */
+#displaybox .TableContainer,
+#displaybox .TableContainer--no-min-width,
+div.title, div#title {
+    position: relative;
+    isolation: isolate;
+}
+#displaybox .TableContainer::after,
+#displaybox .TableContainer--no-min-width::after,
+div.title::before, div#title::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    background: repeating-conic-gradient(from var(--titanium-pulse-angle),
+        transparent 0deg 104deg, #993d0b33 111deg, #ea601bb3 128deg,
+        #ff9463 138deg, #fff4ef 140deg 144deg, transparent 145deg 150deg,
+        #ff8d57 151deg 154deg, transparent 155deg 160deg,
+        #cc5b2599 161deg 164deg, transparent 165deg 180deg), #995735;
+    animation: titanium-pulse-orbit 5.6s linear infinite;
+    animation-play-state: var(--titanium-pulse-play-state);
+    /* hollow octagon: outer edge at the 14px chamfer, 2px band */
+    clip-path: polygon(evenodd,
+        14px 0, calc(100% - 14px) 0, 100% 14px, 100% calc(100% - 14px),
+        calc(100% - 14px) 100%, 14px 100%, 0 calc(100% - 14px), 0 14px, 14px 0,
+        15px 2px, 2px 15px, 2px calc(100% - 15px), 15px calc(100% - 2px),
+        calc(100% - 15px) calc(100% - 2px), calc(100% - 2px) calc(100% - 15px),
+        calc(100% - 2px) 15px, calc(100% - 15px) 2px, 15px 2px);
+}
+/* Stagger them so the whole page does not pulse in lockstep. */
+#displaybox .TableContainer:nth-of-type(2n)::after { animation-delay: -1.9s; }
+#displaybox .TableContainer:nth-of-type(3n)::after { animation-delay: -3.7s; }
+div.title:nth-of-type(2n)::before { animation-delay: -2.6s; }
+
+/* Title bars: swap the gradient corner-cut for the same chamfer as the panels,
+   so the ring has a matching edge to follow. */
+div.title, div#title {
+    background: linear-gradient(168deg, #503a2a 0%, #36261b 45%, #251910 100%);
+    clip-path: polygon(14px 0, calc(100% - 14px) 0, 100% 14px,
+        100% calc(100% - 14px), calc(100% - 14px) 100%, 14px 100%,
+        0 calc(100% - 14px), 0 14px);
+    filter: drop-shadow(0 6px 9px #00000099);
+}
+@media (prefers-reduced-motion: reduce) {
+    #displaybox .TableContainer::after,
+    #displaybox .TableContainer--no-min-width::after,
+    div.title::before, div#title::before { animation: none !important; }
+}
+@media print {
+    #displaybox .TableContainer::after,
+    #displaybox .TableContainer--no-min-width::after,
+    div.title::before, div#title::before { display: none; }
+}
+
+/* ===== v1.8 (local) — outer bloom around every panel =====
+   The rings light the edge; this adds the halo spilling out from it. Layered
+   drop-shadows rather than box-shadow, so the glow follows the chamfered
+   silhouette instead of a rectangle — and filter output is not clipped by the
+   container's own overflow, unlike a pseudo-element would be. */
+#displaybox .TableContainer,
+#displaybox .TableContainer--no-min-width {
+    filter:
+        drop-shadow(1px 0 0 #a0694b) drop-shadow(-1px 0 0 #a0694b)
+        drop-shadow(0 1px 0 #a0694b) drop-shadow(0 -1px 0 #a0694b)
+        drop-shadow(0 0 9px #ef642247)
+        drop-shadow(0 0 24px #de55162b)
+        drop-shadow(0 10px 14px #000000aa);
+}
+div.title, div#title {
+    filter:
+        drop-shadow(0 0 8px #e9692a52)
+        drop-shadow(0 0 20px #de551626)
+        drop-shadow(0 6px 9px #00000099);
+}
+table.dashboard > tbody {
+    filter:
+        drop-shadow(0 0 9px #ef642252)
+        drop-shadow(0 0 22px #de55162b)
+        drop-shadow(0 11px 13px #000000aa);
+}
