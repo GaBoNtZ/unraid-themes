@@ -2,7 +2,7 @@
 
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-%E2%98%95-FFDD00?style=flat-square&logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/gabontz)
 
-Five dark themes for the **Unraid 7.2.x** webGUI, each packaged as a standard Unraid plugin so they
+Six dark themes for the **Unraid 7.2.x** webGUI, each packaged as a standard Unraid plugin so they
 install from the *Plugins* tab and can be listed in Community Applications.
 
 CSS only. No scripts, no PHP, no page templates, no containers, no services — each one replaces the
@@ -15,6 +15,7 @@ Dynamix **Black** theme stylesheet and nothing else, and restores the original o
 | **[NAVY](navy/)** | Modern dark navy with cyan accents | none |
 | **[REFORGED](reforged/)** | Deeper ground, electric-blue accents | none |
 | **[EMBER](ember/)** | Warm orange on near-black, Wayland-inspired palette | animated |
+| **[ARCLIGHT](arclight/)** | Near-black datacentre ground, LED cyan, ember accents — **rounded** corners | animated |
 
 Each theme folder carries its **own banner artwork** (`banner.png`) — the one it was designed and
 captured with. The banner is a separate Unraid setting, so themes never overwrite yours; copy it in
@@ -32,6 +33,12 @@ The rails and card rings really move — that GIF is the theme running on a live
 ## EMBER
 ![EMBER](ember/screenshot.jpg)
 
+## ARCLIGHT
+![ARCLIGHT](arclight/screenshot.jpg)
+
+Rounded corners rather than TITANIUM's chamfer, on a near-black datacentre ground. The whole
+palette is sampled from its own banner artwork.
+
 ## NAVY
 ![NAVY](navy/screenshot.jpg)
 
@@ -48,16 +55,18 @@ https://raw.githubusercontent.com/GaBoNtZ/unraid-themes/main/titanium-still/tita
 https://raw.githubusercontent.com/GaBoNtZ/unraid-themes/main/navy/navy-theme.plg
 https://raw.githubusercontent.com/GaBoNtZ/unraid-themes/main/reforged/reforged-theme.plg
 https://raw.githubusercontent.com/GaBoNtZ/unraid-themes/main/ember/ember-theme.plg
+https://raw.githubusercontent.com/GaBoNtZ/unraid-themes/main/arclight/arclight-theme.plg
 ```
 
 Then select the **Black** theme in *Settings → Display Settings* and hard-refresh (Ctrl+F5).
 
-**Install only one at a time** — all five write to `themes/black.css`, so the last one installed
+**Install only one at a time** — all six write to `themes/black.css`, so the last one installed
 wins. Removing a theme restores the stock stylesheet, which ships inside every plugin.
 
 ## What they share
 
-- Chamfered panels, perimeter energy rings and an outer bloom (TITANIUM / STILL / EMBER)
+- Chamfered panels, perimeter energy rings and an outer bloom (TITANIUM / STILL / EMBER);
+  ARCLIGHT uses the same structure with **rounded** corners instead of the chamfer
 - Page gutters that stay visible instead of collapsing on narrower windows
 - Wide tables scroll inside their own box, so the page never scrolls sideways
 - Banner handling that works with **any** artwork (fills the header, crops to fit; phones get the
